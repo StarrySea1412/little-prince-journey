@@ -15,3 +15,5 @@
 ---
 
 单页站点由 `index.html` 单文件承载（零构建、零依赖、WebAudio 合成音效），插画位于 `assets/`。
+
+排版字体为**霞鹜文楷 LXGW WenKai**（SIL Open Font License 1.1），已按本站用字子集化后自托管于 `assets/fonts/`（两个字重各约 165KB）；字体许可原文见 `assets/fonts/OFL.txt`。
