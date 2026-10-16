@@ -87,27 +87,27 @@ main{position:relative;z-index:1}
 .it-line.show{opacity:1;transform:none}
 .it-count{font-family:var(--mono);font-size:11px;color:var(--dim);margin-top:10px}
 /* rose */
-.rose-wrap{width:150px;margin:0 auto 8px}
-.rose-wrap svg{width:100%;height:auto;overflow:visible}
-#petalsGroup{transform:scale(.34);transform-origin:100px 108px;transition:transform 1.5s cubic-bezier(.2,.85,.3,1)}
-.rose-wrap.bloomed #petalsGroup{transform:scale(1)}
-.rose-wrap.bloomed{filter:drop-shadow(0 0 16px #c8434e55)}
-.ic-wrap{width:170px;margin:0 auto 8px}
-.ic-wrap svg{width:100%;height:auto;overflow:visible}
+.rose-wrap{width:190px;margin:0 auto 8px}
+.rose-wrap img{width:100%;display:block;transform:scale(.42);transform-origin:50% 76%;transition:transform 1.6s cubic-bezier(.2,.85,.3,1);background:#faf7f0;padding:7px;border-radius:14px;box-shadow:0 8px 26px #00000059}
+.rose-wrap.bloomed img{transform:scale(1)}
+.rose-wrap.bloomed{filter:drop-shadow(0 0 18px #c8434e55)}
+.stamp-wrap{position:relative;width:200px;margin:0 auto 10px;transform:rotate(-1deg)}
+.stamp-wrap img{width:100%;display:block;background:#faf7f0;padding:7px;border-radius:14px;box-shadow:0 8px 26px #00000059;transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.3,1)}
+.stamp-wrap img.off{opacity:0;position:absolute;inset:0;transform:scale(.95) rotate(-2deg);pointer-events:none}
 /* baobab */
 .sapling-row{display:flex;justify-content:center;gap:34px;flex-wrap:wrap;min-height:110px;align-items:flex-end}
 .sapling{background:none;border:0;padding:0;cursor:pointer;transition:transform .5s,opacity .6s}
-.sapling svg{width:74px;height:96px;overflow:visible}
+.sapling img{width:96px;height:96px;display:block;background:#faf7f0;padding:5px;border-radius:12px;box-shadow:0 5px 16px #00000047}
 .sapling:hover{transform:translateY(-4px)}
 .sapling.gone{transform:translateY(-46px) rotate(14deg) scale(.7);opacity:0;pointer-events:none}
 /* mini planets */
 .mini-row{display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
 .mini{background:none;border:0;padding:0;cursor:pointer;text-align:center;transition:transform .3s}
-.mini svg{width:74px;height:74px;display:block;overflow:visible}
+.mini img{width:86px;height:86px;display:block;background:#faf7f0;padding:4px;border-radius:12px;box-shadow:0 5px 16px #00000047}
 .mini span{display:block;margin-top:6px;font-size:12px;color:var(--muted);letter-spacing:.06em}
 .mini:hover{transform:translateY(-4px)}
 .mini.on span{color:var(--gold)}
-.mini.on svg circle:first-of-type{stroke:var(--gold)}
+.mini.on img{box-shadow:0 0 0 2.5px var(--gold),0 6px 22px #00000059}
 .mini-cap{margin:20px auto 0;max-width:520px;min-height:4.6em;font-size:14.5px;color:#cfc9b8;line-height:1.9}
 .mini-cap b{color:var(--gold-soft);font-weight:600}
 /* fox */
@@ -116,14 +116,8 @@ main{position:relative;z-index:1}
 .paw.on{opacity:1;transform:scale(1.12)}
 .fox-scene{transition:transform 1.2s cubic-bezier(.2,.8,.3,1);transform-origin:50% 70%}
 /* well */
-.well-wrap{width:190px;margin:0 auto 6px}
-.well-wrap svg{width:100%;height:auto;overflow:visible}
-#bucketG{transition:transform 1.4s cubic-bezier(.3,.8,.3,1)}
-.well-wrap.drawn #bucketG{transform:translateY(-52px)}
-.well-wrap.drawn #crank{transform:rotate(720deg)}
-#crank{transform-origin:100px 64px;transition:transform 1.4s cubic-bezier(.3,.8,.3,1)}
-.water{opacity:0;transition:opacity .8s .5s}
-.well-wrap.drawn .water{opacity:1}
+.well-wrap{width:250px}
+.well-wrap.drawn{filter:drop-shadow(0 0 18px #7fa3d433)}
 /* stars */
 .star-row{display:flex;justify-content:center;gap:22px;flex-wrap:wrap;margin:0 0 6px}
 .star{background:none;border:0;padding:0;cursor:pointer;font-size:30px;color:#3d4d73;line-height:1;transition:color .5s,text-shadow .5s,transform .3s;font-family:var(--serif)}
@@ -178,21 +172,9 @@ footer{max-width:1040px;margin:0 auto;padding:26px 26px 60px;color:var(--dim);fo
   <p class="quote">所有的大人都曾经是孩子——只是很少有人记得这一点。</p>
   <div class="inter">
     <p class="it-title">INTERLUDE · 一幅画的两种看法</p>
-    <div class="ic-wrap" id="drawWrap">
-      <svg viewBox="0 0 200 150" fill="none" aria-hidden="true">
-        <g id="hatView">
-          <ellipse cx="100" cy="88" rx="64" ry="13" fill="#2e4a78" stroke="#5d80b3" stroke-width="2.4"/>
-          <path d="M50 88 C50 60 74 45 100 45 C126 45 150 60 150 88" fill="#33517f" stroke="#5d80b3" stroke-width="2.4"/>
-          <path d="M82 58 C86 52 94 51 100 53" stroke="#7fa3d4" stroke-width="2" stroke-linecap="round" opacity=".6"/>
-        </g>
-        <g id="boaView" style="display:none">
-          <path d="M16 96 C34 92 40 74 58 72 C66 71 72 75 78 80 C86 87 94 92 104 92 C114 92 122 87 130 80 C136 75 142 71 150 72 C168 74 174 92 184 96" stroke="#5d8a6b" stroke-width="13" stroke-linecap="round" fill="none"/>
-          <ellipse cx="104" cy="80" rx="26" ry="24" fill="#5d8a6b"/>
-          <path d="M94 76 C94 64 116 64 116 76" stroke="#3f6a4e" stroke-width="2.4" fill="none" opacity=".85"/>
-          <path d="M97 88 C101 91 109 91 113 88" stroke="#3f6a4e" stroke-width="2.2" fill="none" stroke-linecap="round" opacity=".85"/>
-          <circle cx="28" cy="95" r="2" fill="#3f6a4e"/>
-        </g>
-      </svg>
+    <div class="stamp-wrap" id="drawWrap">
+      <img id="hatImg" src="assets/stamp-hat.webp" alt="水彩画：一顶深蓝色的圆顶礼帽"/>
+      <img id="boaImg" src="assets/stamp-boa.webp" alt="水彩画：一条肚子鼓鼓的蟒蛇，肚子里隐约能看见大象" class="off"/>
     </div>
     <button class="it-btn" id="drawBtn" type="button">让蟒蛇显形</button>
     <p class="it-line" id="drawLine">大人们看到的，永远是一顶帽子。</p>
@@ -215,39 +197,7 @@ footer{max-width:1040px;margin:0 auto;padding:26px 26px 60px;color:var(--dim);fo
   <div class="inter">
     <p class="it-title">INTERLUDE · 玫瑰与玻璃罩</p>
     <div class="rose-wrap" id="roseWrap">
-      <svg viewBox="0 0 200 210" fill="none" aria-hidden="true">
-        <path d="M100 196 C 99 175 100 168 100 148" stroke="#5d7a5d" stroke-width="4" stroke-linecap="round"/>
-        <path d="M100 158 c-20 0 -30 12 -32 26 18 2 30 -8 32 -26z" fill="#5d7a5d"/>
-        <path d="M100 146 c20 -2 31 8 33 22 -17 3 -30 -5 -33 -22z" fill="#4c684c"/>
-        <g id="petalsGroup">
-          <g fill="#b23a47">
-            <ellipse cx="100" cy="74" rx="14" ry="26"/>
-            <ellipse cx="100" cy="74" rx="14" ry="26" transform="rotate(45 100 108)"/>
-            <ellipse cx="100" cy="74" rx="14" ry="26" transform="rotate(90 100 108)"/>
-            <ellipse cx="100" cy="74" rx="14" ry="26" transform="rotate(135 100 108)"/>
-            <ellipse cx="100" cy="74" rx="14" ry="26" transform="rotate(180 100 108)"/>
-            <ellipse cx="100" cy="74" rx="14" ry="26" transform="rotate(225 100 108)"/>
-            <ellipse cx="100" cy="74" rx="14" ry="26" transform="rotate(270 100 108)"/>
-            <ellipse cx="100" cy="74" rx="14" ry="26" transform="rotate(315 100 108)"/>
-          </g>
-          <g fill="#cf5560">
-            <ellipse cx="100" cy="80" rx="10.5" ry="19" transform="rotate(22 100 108)"/>
-            <ellipse cx="100" cy="80" rx="10.5" ry="19" transform="rotate(67 100 108)"/>
-            <ellipse cx="100" cy="80" rx="10.5" ry="19" transform="rotate(112 100 108)"/>
-            <ellipse cx="100" cy="80" rx="10.5" ry="19" transform="rotate(157 100 108)"/>
-            <ellipse cx="100" cy="80" rx="10.5" ry="19" transform="rotate(202 100 108)"/>
-            <ellipse cx="100" cy="80" rx="10.5" ry="19" transform="rotate(247 100 108)"/>
-            <ellipse cx="100" cy="80" rx="10.5" ry="19" transform="rotate(292 100 108)"/>
-            <ellipse cx="100" cy="80" rx="10.5" ry="19" transform="rotate(337 100 108)"/>
-          </g>
-          <circle cx="100" cy="108" r="10" fill="#e08a8f"/>
-          <path d="M96 108a4.5 4.5 0 0 1 8 0" stroke="#f3ddb0" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-        </g>
-        <path d="M32 116 a68 68 0 0 1 136 0" stroke="#aebfe055" stroke-width="2.5" stroke-linecap="round"/>
-        <path d="M32 116 c0 7.6 30.4 13 68 13 s68 -5.4 68 -13" stroke="#aebfe02e" stroke-width="2"/>
-        <circle cx="46" cy="36" r="1.6" fill="#e6b95c88"/>
-        <circle cx="166" cy="24" r="1.2" fill="#e6b95c66"/>
-      </svg>
+      <img src="assets/stamp-rose.webp" alt="水彩画：一朵盛开的红玫瑰"/>
     </div>
     <button class="it-btn" id="roseBtn" type="button">给它浇一点水</button>
     <p class="it-line" id="roseLine">她抖了抖刺，轻声说：「你看，我可是和小王子一起看过日落的玫瑰。」</p>
@@ -363,33 +313,9 @@ footer{max-width:1040px;margin:0 auto;padding:26px 26px 60px;color:var(--dim);fo
   <p class="quote">让沙漠显得美丽的，是它在某个看不见的地方，藏着一口井。</p>
   <div class="inter">
     <p class="it-title">INTERLUDE · 打一桶水</p>
-    <div class="well-wrap" id="wellWrap">
-      <svg viewBox="0 0 200 168" fill="none" aria-hidden="true">
-        <path d="M12 152h176" stroke="#243453" stroke-width="2" stroke-linecap="round"/>
-        <path d="M64 122v-64M136 122v-64" stroke="#33456b" stroke-width="5" stroke-linecap="round"/>
-        <rect x="54" y="50" width="92" height="9" rx="4.5" fill="#3d5379"/>
-        <path d="M100 50v-8M92 42h16" stroke="#3d5379" stroke-width="3.4" stroke-linecap="round"/>
-        <circle cx="100" cy="64" r="9" stroke="#e6b95c" stroke-width="3"/>
-        <g id="crank"><path d="M100 64l15-6" stroke="#e6b95c" stroke-width="3" stroke-linecap="round"/><circle cx="117" cy="57" r="3.2" fill="#e6b95c"/></g>
-        <path d="M62 122 C62 142 76 152 100 152 C124 152 138 142 138 122" fill="#22314f" stroke="#3d5379" stroke-width="2.4"/>
-        <ellipse cx="100" cy="122" rx="38" ry="10.5" fill="#16233f" stroke="#3d5379" stroke-width="2.4"/>
-        <ellipse class="water" cx="100" cy="123" rx="30" ry="7" fill="#2e4a78"/>
-        <ellipse class="water" cx="100" cy="122.5" rx="19" ry="4.2" fill="#5d80b3" opacity="0"/>
-        <circle class="water" cx="90" cy="121" r="1.6" fill="#cfe0f7" opacity="0"/>
-        <circle class="water" cx="108" cy="124" r="1.3" fill="#cfe0f7" opacity="0"/>
-        <clipPath id="wellClip"><rect x="58" y="60" width="84" height="80"/></clipPath>
-        <g clip-path="url(#wellClip)">
-          <g id="bucketG">
-            <path d="M100 64v56" stroke="#8d9bbd" stroke-width="2"/>
-            <path d="M88 120h24l-3.2 15h-17.6z" fill="#33456b" stroke="#5d7a5d" stroke-width="2" stroke-linejoin="round"/>
-            <path d="M91 120c0-4.6 18-4.6 18 0" stroke="#5d7a5d" stroke-width="2"/>
-          </g>
-        </g>
-        <circle cx="72" cy="132" r="2" fill="#2c3f6b"/>
-        <circle cx="86" cy="141" r="1.6" fill="#2c3f6b"/>
-        <circle cx="118" cy="139" r="2" fill="#2c3f6b"/>
-        <circle cx="130" cy="130" r="1.6" fill="#2c3f6b"/>
-      </svg>
+    <div class="stamp-wrap well-wrap" id="wellWrap">
+      <img id="wellDown" src="assets/stamp-well-down.webp" alt="水彩画：夜里沙漠中的石井，木桶低垂在绳子末端"/>
+      <img id="wellUp" src="assets/stamp-well-up.webp" alt="水彩画：木桶被拉上井口，水面闪着星光" class="off"/>
     </div>
     <button class="it-btn" id="wellBtn" type="button">转动辘轳</button>
     <p class="it-line" id="wellLine">这一桶水，喝起来像一份节日的礼物。</p>
@@ -603,27 +529,22 @@ footer{max-width:1040px;margin:0 auto;padding:26px 26px 60px;color:var(--dim);fo
   });
 
   /* ---------- 互动一·二：一幅画的两种看法 ---------- */
-  var drawA = document.getElementById("hatView"), drawB = document.getElementById("boaView");
+  var drawA = document.getElementById("hatImg"), drawB = document.getElementById("boaImg");
   var drawBtn = document.getElementById("drawBtn"), drawLine = document.getElementById("drawLine");
   var drawCaps = ["大人们看到的，永远是一顶帽子。", "可那底下，是一头大象——只有孩子看得出来。"];
   var drawState = 0;
   drawLine.classList.add("show");
   drawBtn.addEventListener("click", function(){
     drawState = 1 - drawState;
-    drawA.style.display = drawState ? "none" : "";
-    drawB.style.display = drawState ? "" : "none";
+    drawA.classList.toggle("off", drawState === 1);
+    drawB.classList.toggle("off", drawState === 0);
     drawLine.textContent = drawCaps[drawState];
     drawBtn.textContent = drawState ? "变回帽子" : "让蟒蛇显形";
     chime(drawState ? 392 : 523, 0.9, 0.08);
   });
 
   /* ---------- 互动二：拔猴面包树 ---------- */
-  var saplingSVG = '<svg viewBox="0 0 74 96" fill="none" aria-hidden="true">' +
-    '<path d="M37 92c-1-18 0-30 0-42" stroke="#5d7a5d" stroke-width="4" stroke-linecap="round"/>' +
-    '<path d="M37 66c-9-1-15-8-16-18 9-1 15 6 16 18z" fill="#5d7a5d"/>' +
-    '<path d="M37 58c9-2 15-9 15-19-9-1-15 7-15 19z" fill="#4c684c"/>' +
-    '<path d="M37 50c-3-6-3-12 0-19 3 7 3 13 0 19z" fill="#728a6f"/>' +
-    '<path d="M28 92h18" stroke="#33456b" stroke-width="3" stroke-linecap="round"/></svg>';
+  var saplingHTML = '<img src="assets/stamp-sapling.webp" alt="猴面包树幼苗"/>';
   var row = document.getElementById("saplingRow");
   var pulled = 0;
   var baoLine = document.getElementById("baobabLine");
@@ -632,7 +553,7 @@ footer{max-width:1040px;margin:0 auto;padding:26px 26px 60px;color:var(--dim);fo
       var b = document.createElement("button");
       b.type = "button"; b.className = "sapling";
       b.setAttribute("aria-label", "拔掉第 " + (idx + 1) + " 棵猴面包树幼苗");
-      b.innerHTML = saplingSVG;
+      b.innerHTML = saplingHTML;
       b.addEventListener("click", function(){
         if (b.classList.contains("gone")) return;
         b.classList.add("gone");
@@ -649,25 +570,13 @@ footer{max-width:1040px;margin:0 auto;padding:26px 26px 60px;color:var(--dim);fo
   }
 
   /* ---------- 互动三：六颗小星球 ---------- */
-  var planetBase = function(glyph){
-    return '<svg viewBox="0 0 74 74" fill="none" aria-hidden="true">' +
-      '<circle cx="37" cy="45" r="21" fill="#16233f" stroke="#3d5379" stroke-width="2"/>' +
-      '<circle cx="29" cy="40" r="2" fill="#243453"/><circle cx="45" cy="52" r="1.6" fill="#243453"/>' +
-      glyph + "</svg>";
-  };
   var planets = [
-    { n: "国王", g: '<path d="M27 18l3.5-6 4.5 5 2-7 2 7 4.5-5 3.5 6z" fill="#e6b95c"/><path d="M31 24h12" stroke="#e6b95c" stroke-width="2.4" stroke-linecap="round"/>',
-      c: "<b>国王</b>：「我命令你打哈欠。」他统辖着一切，连星星都得按时听他指挥——虽然他的星球上，只有他自己和一件旧袍子。" },
-    { n: "虚荣者", g: '<rect x="31" y="12" width="12" height="13" rx="2" fill="#c8434e"/><rect x="27" y="24" width="20" height="3.4" rx="1.7" fill="#c8434e"/>',
-      c: "<b>虚荣者</b>：「请鼓掌吧！」——他戴着一顶高高的帽子，只听见掌声，别的什么都听不见。" },
-    { n: "酒鬼", g: '<rect x="32.5" y="11" width="3.4" height="7" rx="1.4" fill="#5d7a5d"/><rect x="30" y="17" width="8.6" height="15" rx="3" fill="#5d7a5d"/>',
-      c: "<b>酒鬼</b>：「你为什么要喝酒？」「为了忘记。」「忘记什么？」「忘记我喝酒的羞愧。」" },
-    { n: "商人", g: '<ellipse cx="37" cy="30" rx="8.5" ry="3.2" fill="#e6b95c"/><ellipse cx="37" cy="26.5" rx="8.5" ry="3.2" fill="#d3a94e"/><ellipse cx="37" cy="23" rx="8.5" ry="3.2" fill="#e6b95c"/>',
-      c: "<b>商人</b>：他埋头数星星，把编号写进纸片锁进抽屉。「我占有它们。」——占有从不能让人富有，只会让人一直忙。" },
-    { n: "点灯人", g: '<rect x="36" y="16" width="2.4" height="15" rx="1.2" fill="#3d5379"/><circle cx="37.2" cy="13.5" r="5" fill="#e6b95c"/><path d="M31 8l-2.6-2.6M43.4 8l2.6-2.6" stroke="#e6b95c" stroke-width="1.8" stroke-linecap="round"/>',
-      c: "<b>点灯人</b>：照亮的是一整颗星球，所以他每分钟都要点一次灯、熄一次灯。他是唯一一个，让小王子觉得在忙正经事的大人。" },
-    { n: "地理学家", g: '<rect x="26" y="14" width="9.6" height="14" rx="1.4" fill="#f3ddb0"/><rect x="38.4" y="14" width="9.6" height="14" rx="1.4" fill="#e8cf9e"/><path d="M37 14v14" stroke="#a8894f" stroke-width="1.6"/>',
-      c: "<b>地理学家</b>：「我只记录永恒的山河。花？花是短暂的，不在我的记录里。」——可是小王子的那朵玫瑰，正是这样一朵花。" },
+    { n: "国王", c: "<b>国王</b>：「我命令你打哈欠。」他统辖着一切，连星星都得按时听他指挥——虽然他的星球上，只有他自己和一件旧袍子。" },
+    { n: "虚荣者", c: "<b>虚荣者</b>：「请鼓掌吧！」——他戴着一顶高高的帽子，只听见掌声，别的什么都听不见。" },
+    { n: "酒鬼", c: "<b>酒鬼</b>：「你为什么要喝酒？」「为了忘记。」「忘记什么？」「忘记我喝酒的羞愧。」" },
+    { n: "商人", c: "<b>商人</b>：他埋头数星星，把编号写进纸片锁进抽屉。「我占有它们。」——占有从不能让人富有，只会让人一直忙。" },
+    { n: "点灯人", c: "<b>点灯人</b>：照亮的是一整颗星球，所以他每分钟都要点一次灯、熄一次灯。他是唯一一个，让小王子觉得在忙正经事的大人。" },
+    { n: "地理学家", c: "<b>地理学家</b>：「我只记录永恒的山河。花？花是短暂的，不在我的记录里。」——可是小王子的那朵玫瑰，正是这样一朵花。" },
   ];
   var miniRow = document.getElementById("miniRow");
   var miniCap = document.getElementById("miniCap");
@@ -675,7 +584,7 @@ footer{max-width:1040px;margin:0 auto;padding:26px 26px 60px;color:var(--dim);fo
     var b = document.createElement("button");
     b.type = "button"; b.className = "mini";
     b.setAttribute("aria-label", "点亮" + p.n + "的星球");
-    b.innerHTML = planetBase(p.g) + "<span>" + p.n + "</span>";
+    b.innerHTML = '<img src="assets/planet-' + (i + 1) + '.webp" alt="' + p.n + '的星球"/>' + "<span>" + p.n + "</span>";
     b.addEventListener("click", function(){
       if (b.classList.contains("on")) return;
       b.classList.add("on");
@@ -730,7 +639,8 @@ footer{max-width:1040px;margin:0 auto;padding:26px 26px 60px;color:var(--dim);fo
     if (wellDone) return;
     wellDone = true;
     wellWrap.classList.add("drawn");
-    document.querySelectorAll(".well-wrap .water").forEach(function(el){ el.style.opacity = ""; });
+    document.getElementById("wellDown").classList.add("off");
+    document.getElementById("wellUp").classList.remove("off");
     document.getElementById("wellLine").classList.add("show");
     chime(392, 0.8, 0.08); setTimeout(function(){ chime(523, 0.9, 0.07); }, 300); setTimeout(function(){ chime(659, 1.2, 0.06); }, 620);
     wellBtn.disabled = true; wellBtn.textContent = "水打上来了";
