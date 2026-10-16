@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="color-scheme" content="dark"/>
+<meta name="theme-color" content="#0a111f"/>
+<meta name="description" content="小王子 · 星间漫游 —— 一场献给曾经是孩子的大人的旅行。原创中文重述与原创水彩插画，八章互动旅程，手机与电脑皆可进入。"/>
+<meta property="og:title" content="小王子 · 星间漫游"/>
+<meta property="og:description" content="一颗只比房子大一点的星球，上面住着一位小王子。八章互动旅程，献给曾经是孩子的大人。"/>
+<meta property="og:type" content="website"/>
+<title>小王子 · 星间漫游</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='5' fill='%230a111f'/%3E%3Cpath d='M12 3l1.9 6.1L20 11l-6.1 1.9L12 19l-1.9-6.1L4 11l6.1-1.9z' fill='%23e6b95c'/%3E%3C/svg%3E"/>
+<style>
+:root{
+  --bg0:#0a111f;--bg1:#0e1830;--bg2:#122040;
+  --ink:#e9e4d6;--muted:#9aa3b8;--dim:#6d7691;
+  --gold:#e6b95c;--gold-soft:#f3ddb0;--rose:#c8434e;--rose-soft:#e08a8f;
+  --leaf:#5d7a5d;--line:#243453;
+  --serif:"Songti SC","STSong","Noto Serif CJK SC","Source Han Serif SC",serif;
+  --sans:-apple-system,"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+  --mono:ui-monospace,"SFMono-Regular",Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;color:var(--ink);font-family:var(--sans);line-height:1.9;
+  background:radial-gradient(1200px 800px at 78% -10%,#1a2a4d 0%,transparent 60%),
+             radial-gradient(900px 700px at 12% 30%,#131f3a 0%,transparent 55%),
+             linear-gradient(180deg,var(--bg0) 0%,var(--bg1) 45%,var(--bg0) 100%);
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+::selection{background:#2c3f6b}
+#sky{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+main{position:relative;z-index:1}
+/* rail */
+.rail{position:fixed;right:18px;top:50%;transform:translateY(-50%);z-index:30;display:flex;flex-direction:column;gap:14px}
+.rail button{background:none;border:0;padding:4px;cursor:pointer;font-size:13px;line-height:1;color:#39486b;transition:color .3s,transform .3s;font-family:var(--serif)}
+.rail button:hover{transform:scale(1.3)}
+.rail button.on{color:var(--gold);text-shadow:0 0 12px #e6b95c88}
+@media (max-width:760px){.rail{right:8px;gap:10px}.rail button{font-size:11px}}
+/* cover */
+.cover{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 22px;position:relative}
+.cover h1{font-family:var(--serif);font-weight:800;font-size:clamp(64px,12vw,116px);letter-spacing:.14em;margin:0 0 10px;color:#f2ead6;text-shadow:0 0 40px #e6b95c2e;text-indent:.14em}
+.cover .sub{font-family:var(--serif);font-size:clamp(20px,3.4vw,30px);letter-spacing:.34em;color:var(--gold);margin:0 0 26px;text-indent:.34em}
+.cover .tagline{color:var(--muted);font-size:14px;letter-spacing:.12em;margin:0 0 54px}
+.cover .enter{
+  font-family:var(--serif);font-size:16px;letter-spacing:.22em;color:var(--gold-soft);
+  background:#0e18308c;border:1px solid #e6b95c66;border-radius:100px;padding:15px 38px 15px 44px;
+  cursor:pointer;transition:background .35s,box-shadow .35s,transform .35s;
+}
+.cover .enter:hover{background:#e6b95c1f;box-shadow:0 0 34px #e6b95c33;transform:translateY(-2px)}
+.cover .hint{margin:26px 0 0;color:var(--dim);font-size:12px;letter-spacing:.08em}
+.cover .starline{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);color:#3b4a6e;font-size:11px;letter-spacing:.3em;animation:sway 3.4s ease-in-out infinite}
+@keyframes sway{0%,100%{opacity:.5;transform:translateX(-50%) translateY(0)}50%{opacity:1;transform:translateX(-50%) translateY(6px)}}
+/* chapters */
+.chapter{max-width:1040px;margin:0 auto;padding:110px 26px 40px;position:relative}
+.chapter+.chapter{border-top:1px dashed #1d2b49}
+.ch-head{text-align:center;margin-bottom:42px}
+.ch-label{font-family:var(--mono);font-size:11px;letter-spacing:.3em;color:var(--gold);margin:0 0 16px}
+.ch-head h2{font-family:var(--serif);font-weight:700;font-size:clamp(26px,4.2vw,36px);letter-spacing:.04em;margin:0;color:#f0ead9}
+.ch-head .orn{display:block;margin:18px auto 0;color:#3d4d73;letter-spacing:.5em;font-size:12px}
+.scene{max-width:720px;margin:0 auto 40px;position:relative}
+.scene img{width:100%;display:block;border-radius:6px;
+  -webkit-mask-image:radial-gradient(115% 115% at 50% 45%,#000 62%,transparent 98%);
+  mask-image:radial-gradient(115% 115% at 50% 45%,#000 62%,transparent 98%);
+  filter:saturate(.96)}
+.card{max-width:640px;margin:0 auto;font-size:16.5px;color:#d9d4c4}
+.card p{margin:0 0 1.3em}
+.card strong{color:var(--gold-soft);font-weight:650}
+.quote{font-family:var(--serif);font-size:clamp(19px,3vw,23px);line-height:2;color:var(--gold);text-align:center;margin:44px auto;max-width:560px}
+.quote:before{content:"✦";display:block;color:#3d4d73;font-size:12px;margin-bottom:16px}
+/* interactions */
+.inter{margin:44px auto 0;max-width:640px;background:#0e183099;border:1px solid var(--line);border-radius:14px;padding:26px 26px 22px;text-align:center}
+.inter .it-title{font-family:var(--mono);font-size:11px;letter-spacing:.24em;color:var(--muted);margin:0 0 20px}
+.it-btn{
+  font-family:var(--serif);font-size:14.5px;letter-spacing:.14em;color:var(--gold-soft);
+  background:none;border:1px solid #e6b95c55;border-radius:100px;padding:11px 30px;cursor:pointer;
+  transition:background .3s,box-shadow .3s;
+}
+.it-btn:hover{background:#e6b95c17;box-shadow:0 0 22px #e6b95c26}
+.it-btn:disabled{opacity:.45;cursor:default;box-shadow:none}
+.it-line{margin:20px 0 0;font-family:var(--serif);font-size:16px;color:var(--gold-soft);min-height:1.9em;opacity:0;transform:translateY(6px);transition:opacity .8s,transform .8s}
+.it-line.show{opacity:1;transform:none}
+.it-count{font-family:var(--mono);font-size:11px;color:var(--dim);margin-top:10px}
+/* rose */
+.rose-wrap{width:150px;margin:0 auto 8px}
+.rose-wrap svg{width:100%;height:auto;overflow:visible}
+#petalsGroup{transform:scale(.34);transform-origin:100px 118px;transition:transform 1.5s cubic-bezier(.2,.85,.3,1)}
+.rose-wrap.bloomed #petalsGroup{transform:scale(1)}
+.rose-wrap.bloomed{filter:drop-shadow(0 0 16px #c8434e55)}
+/* baobab */
+.sapling-row{display:flex;justify-content:center;gap:34px;flex-wrap:wrap;min-height:110px;align-items:flex-end}
+.sapling{background:none;border:0;padding:0;cursor:pointer;transition:transform .5s,opacity .6s}
+.sapling svg{width:74px;height:96px;overflow:visible}
+.sapling:hover{transform:translateY(-4px)}
+.sapling.gone{transform:translateY(-46px) rotate(14deg) scale(.7);opacity:0;pointer-events:none}
+/* mini planets */
+.mini-row{display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
+.mini{background:none;border:0;padding:0;cursor:pointer;text-align:center;transition:transform .3s}
+.mini svg{width:74px;height:74px;display:block;overflow:visible}
+.mini span{display:block;margin-top:6px;font-size:12px;color:var(--muted);letter-spacing:.06em}
+.mini:hover{transform:translateY(-4px)}
+.mini.on span{color:var(--gold)}
+.mini.on svg circle:first-of-type{stroke:var(--gold)}
+.mini-cap{margin:20px auto 0;max-width:520px;min-height:4.6em;font-size:14.5px;color:#cfc9b8;line-height:1.9}
+.mini-cap b{color:var(--gold-soft);font-weight:600}
+/* fox */
+.fox-steps{display:flex;justify-content:center;gap:10px;margin:0 0 4px}
+.paw{width:22px;height:22px;opacity:.25;transition:opacity .5s,transform .5s}
+.paw.on{opacity:1;transform:scale(1.12)}
+.fox-scene{transition:transform 1.2s cubic-bezier(.2,.8,.3,1);transform-origin:50% 70%}
+/* well */
+.well-wrap{width:190px;margin:0 auto 6px}
+.well-wrap svg{width:100%;height:auto;overflow:visible}
+#bucketG{transition:transform 1.4s cubic-bezier(.3,.8,.3,1)}
+.well-wrap.drawn #bucketG{transform:translateY(-64px)}
+.well-wrap.drawn #crank{transform:rotate(720deg)}
+#crank{transform-origin:100px 64px;transition:transform 1.4s cubic-bezier(.3,.8,.3,1)}
+.water{opacity:0;transition:opacity .8s .5s}
+.well-wrap.drawn .water{opacity:1}
+/* stars */
+.star-row{display:flex;justify-content:center;gap:22px;flex-wrap:wrap;margin:0 0 6px}
+.star{background:none;border:0;padding:0;cursor:pointer;font-size:30px;color:#3d4d73;line-height:1;transition:color .5s,text-shadow .5s,transform .3s;font-family:var(--serif)}
+.star:hover{transform:scale(1.25)}
+.star.lit{color:var(--gold);text-shadow:0 0 18px #e6b95ccc;animation:pop .6s ease}
+@keyframes pop{0%{transform:scale(.6)}55%{transform:scale(1.5)}100%{transform:scale(1)}}
+/* final */
+.final{max-width:720px;margin:0 auto;padding:120px 26px 70px;text-align:center}
+.final .sig{color:#3d4d73;letter-spacing:.6em;font-size:12px;margin:0 0 40px}
+.final .last{font-family:var(--serif);font-size:clamp(22px,4vw,30px);color:var(--gold);line-height:2;margin:0 0 44px}
+.final .cred{color:var(--muted);font-size:12.5px;line-height:2.1}
+.final .cred b{color:#cfc9b8;font-weight:600}
+.totop{margin-top:40px;font-family:var(--serif);font-size:14px;letter-spacing:.18em;color:var(--gold-soft);background:none;border:1px solid #e6b95c44;border-radius:100px;padding:12px 30px;cursor:pointer;transition:background .3s}
+.totop:hover{background:#e6b95c17}
+footer{max-width:1040px;margin:0 auto;padding:26px 26px 60px;color:var(--dim);font-size:11.5px;text-align:center;letter-spacing:.06em;border-top:1px dashed #1d2b49}
+/* reveal */
+.fx{opacity:0;transform:translateY(20px)}
+.ch-head.fx,.scene.fx,.card.fx,.inter.fx,.quote.fx,.final .last.fx{transition:opacity .9s ease,transform 1s cubic-bezier(.2,.8,.3,1)}
+.fx-in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){
+  .fx{opacity:1;transform:none;transition:none}
+  .cover .starline{animation:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<canvas id="sky" aria-hidden="true"></canvas>
+<nav class="rail" id="rail" aria-label="章节导航"></nav>
+<main>
+
+<section class="cover" id="cover">
+  <h1>小王子</h1>
+  <p class="sub">星间漫游</p>
+  <p class="tagline">一场献给曾经是孩子的大人的旅行 · 原创重述与插画</p>
+  <button class="enter" id="enterBtn" type="button">✦ 点击 · 开始旅程</button>
+  <p class="hint">手机与电脑都可以走进这片星空 · 建议打开声音</p>
+  <div class="starline">✦</div>
+</section>
+
+<section class="chapter" id="ch1" data-name="B-612">
+  <div class="ch-head">
+    <p class="ch-label">CHAPITRE 01 · B-612</p>
+    <h2>一颗比房子大不了多少的星球</h2>
+    <span class="orn">✦ ✦ ✦</span>
+  </div>
+  <figure class="scene"><img src="assets/fig-planet.webp" alt="水彩画：漂浮在星空中的小小星球，两座火山、玻璃罩里的红玫瑰" loading="lazy"/></figure>
+  <div class="card">
+    <p>在小行星 B-612 上，住着一位小王子。星球很小——两座活火山刚好拿来热早饭，剩下的一座死火山当凳子坐，再挤进一朵玫瑰，就差不多满了。</p>
+    <p>玫瑰是在某个清晨忽然出现的。她挑了好看的盛装，慢吞吞地梳妆，然后打着哈欠说：「我刚刚睡醒，请你原谅，我的花瓣还乱着呢。」小王子从来没有见过这么好看的花。</p>
+  </div>
+  <p class="quote">花是柔弱的，天真的。她们尽全力保护自己——用那几根刺。</p>
+  <div class="inter">
+    <p class="it-title">INTERLUDE · 玫瑰与玻璃罩</p>
+    <div class="rose-wrap" id="roseWrap">
+      <svg viewBox="0 0 200 210" fill="none" aria-hidden="true">
+        <path d="M100 196 C 99 168 100 156 100 132" stroke="#5d7a5d" stroke-width="4" stroke-linecap="round"/>
+        <path d="M100 150 c-20 0 -30 12 -32 26 18 2 30 -8 32 -26z" fill="#5d7a5d"/>
+        <path d="M100 138 c20 -2 31 8 33 22 -17 3 -30 -5 -33 -22z" fill="#4c684c"/>
+        <g id="petalsGroup">
+          <path d="M100 112 c-26 0 -40 -15 -40 -32 0 -19 18 -32 40 -32 22 0 40 13 40 32 0 17 -14 32 -40 32z" fill="#b93b48"/>
+          <path d="M100 103 c-16 0 -25 -10 -25 -22 0 -13 11 -22 25 -22 14 0 25 9 25 22 0 12 -9 22 -25 22z" fill="#cf5560"/>
+          <path d="M100 95 c-9 0 -15 -6 -15 -13 0 -8 7 -13 15 -13 8 0 15 5 15 13 0 7 -6 13 -15 13z" fill="#e08a8f"/>
+          <path d="M92 78 c3 -4 13 -4 16 0" stroke="#f3ddb0" stroke-width="2" stroke-linecap="round" opacity=".7"/>
+        </g>
+        <path d="M52 118 a48 48 0 0 1 96 0" stroke="#aebfe066" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M52 118 c0 6 21 10 48 10 s48 -4 48 -10" stroke="#aebfe033" stroke-width="2"/>
+        <circle cx="46" cy="36" r="1.6" fill="#e6b95c88"/>
+        <circle cx="166" cy="24" r="1.2" fill="#e6b95c66"/>
+      </svg>
+    </div>
+    <button class="it-btn" id="roseBtn" type="button">给它浇一点水</button>
+    <p class="it-line" id="roseLine">她抖了抖刺，轻声说：「你看，我可是和小王子一起看过日落的玫瑰。」</p>
+  </div>
+</section>
+
+<section class="chapter" id="ch2" data-name="猴面包树">
+  <div class="ch-head">
+    <p class="ch-label">CHAPITRE 02 · LES BAOBABS</p>
+    <h2>每天早上，给星球梳洗</h2>
+    <span class="orn">✦ ✦ ✦</span>
+  </div>
+  <figure class="scene"><img src="assets/fig-baobab.webp" alt="水彩画：从小小星球的土壤里拔除猴面包树幼苗" loading="lazy"/></figure>
+  <div class="card">
+    <p>猴面包树的幼苗，和玫瑰的幼苗长得一模一样。如果发现得太晚，就再也拔不掉了——它的根会撑满整个星球，把它撑得四分五裂。</p>
+    <p>「这是纪律，」小王子说。「早上梳洗完毕，就要认真地给星球梳洗。拔猴面包树这件事，要趁早。」</p>
+  </div>
+  <p class="quote">等到它长成大树，就是一场灾难。所以，要在它还是幼苗的时候动手。</p>
+  <div class="inter">
+    <p class="it-title">INTERLUDE · 清晨的拔草</p>
+    <div class="sapling-row" id="saplingRow"></div>
+    <p class="it-line" id="baobabLine">星球轻了一点，也安全了一点。小王子拍了拍手上的土，去看他的玫瑰。</p>
+    <p class="it-count" id="baobabCount">已拔除 0 / 3</p>
+  </div>
+</section>
+
+<section class="chapter" id="ch3" data-name="出发">
+  <div class="ch-head">
+    <p class="ch-label">CHAPITRE 03 · LE DÉPART</p>
+    <h2>他利用一群候鸟，离开了家</h2>
+    <span class="orn">✦ ✦ ✦</span>
+  </div>
+  <div class="card">
+    <p>走的那天早上，他给玫瑰浇了最后一次水，替她把玻璃罩盖好，又把两座活火山的烟囱通了一遍——活的火山热早饭，死的那座当凳子，一个都不能怠慢。</p>
+    <p>玫瑰没有哭。「把罩子拿开吧，」她说，「我不再需要它了。我有刺，而且，我从来不怕夜风。」——其实她只是不想让他看见自己掉眼泪。花都是这样的：嘴上很硬，心很软。</p>
+  </div>
+  <p class="quote">她不肯说挽留，只肯说：你要照顾好你自己。</p>
+  <div class="card">
+    <p>三座火山冒了冒烟，算作挥手。候鸟起飞的时候，小王子回头看了一眼——只一眼。他知道自己还会回来，只是不知道要经过多少颗星球，和多少场日落。</p>
+  </div>
+</section>
+
+<section class="chapter" id="ch4" data-name="大人的星球">
+  <div class="ch-head">
+    <p class="ch-label">CHAPITRE 04 · LES GRANDES PERSONNES</p>
+    <h2>325、326、327、328、329、330 号星球</h2>
+    <span class="orn">✦ ✦ ✦</span>
+  </div>
+  <figure class="scene"><img src="assets/fig-adults.webp" alt="水彩画：六颗漂浮的小星球，每颗上住着一个大人" loading="lazy"/></figure>
+  <div class="card">
+    <p>他先后拜访了六颗星球。每一颗上都只住着一个大人——星球小得装不下别的东西，所以每个大人，都只能牢牢地成为一件事。</p>
+    <p>大人们热爱数字。你对他们说起一位新朋友，他们从不问：「他说话的声音好不好听？他喜欢什么游戏？」他们问：「他几岁？有几个兄弟？体重多少？」——好像知道了这一串数字，就算认识了一个人。</p>
+  </div>
+  <p class="quote">「大人们真是奇怪极了。」——他在旅行日志里写下这一行。</p>
+  <div class="inter">
+    <p class="it-title">INTERLUDE · 点亮六颗小星球</p>
+    <div class="mini-row" id="miniRow"></div>
+    <div class="mini-cap" id="miniCap">逐颗点亮它们，看看上面住着的都是谁。</div>
+  </div>
+</section>
+
+<section class="chapter" id="ch5" data-name="地球">
+  <div class="ch-head">
+    <p class="ch-label">CHAPITRE 05 · LA TERRE</p>
+    <h2>第七颗星球，叫地球</h2>
+    <span class="orn">✦ ✦ ✦</span>
+  </div>
+  <div class="card">
+    <p>地球很大。上面有一百一十一位国王，七千个地理学家，九十万个商人，七百五十万个酒鬼，三亿一千一百万个虚荣的人……也就是说，大约二十亿个大人。而在这之前，小王子一直以为自己拥有的，是整个宇宙里独一份的东西。</p>
+    <p>他落在撒哈拉沙漠。醒来遇见的第一条生命，是一条金色的蛇，盘在沙里，像一道细细的月光。蛇说起话来像在出谜语：「在人群里，也还是会孤单的。」</p>
+    <p>后来他走进了一座花园。五千朵玫瑰，全都长得像他那一朵。他趴在草地上，第一次哭得那么伤心——他以为自己是全世界唯一拥有那朵玫瑰的人，可是看起来，他只是拥有了一朵普通的、和五千朵一模一样的玫瑰。</p>
+  </div>
+  <p class="quote">一个人的骄傲，有时候只值五千朵一模一样的花——直到有人教他换一种方式去看。</p>
+</section>
+
+<section class="chapter" id="ch6" data-name="驯养">
+  <div class="ch-head">
+    <p class="ch-label">CHAPITRE 06 · APPRIVOISER</p>
+    <h2>「来驯养我吧。」</h2>
+    <span class="orn">✦ ✦ ✦</span>
+  </div>
+  <div class="card">
+    <p>就在他趴在草地上难过的时候，狐狸出现了。「我不能和你玩，」狐狸说，「我还没有被驯养。」</p>
+    <p>「什么是驯养？」「就是建立联系。对我来说，你只是一个和千千万万小男孩一样的小男孩；对你来说，我也只是一只和千千万万狐狸一样的狐狸。但是，如果你驯养了我——你对我来说，就是宇宙里独一无二的了。」</p>
+  </div>
+  <p class="quote">让她变得无可替代的，从来不是她本身，而是你为她花掉的那些时间。</p>
+  <div class="inter">
+    <p class="it-title">INTERLUDE · 驯养需要耐心</p>
+    <figure class="scene fox-scene" id="foxScene" style="margin-bottom:20px"><img src="assets/fig-fox.webp" alt="水彩画：星空下金色麦田里的小狐狸" loading="lazy"/></figure>
+    <div class="fox-steps" id="pawRow"></div>
+    <button class="it-btn" id="foxBtn" type="button">再靠近一点</button>
+    <p class="it-line" id="foxLine">狐狸坐在麦田里，隔着一段距离，安静地看着你。</p>
+  </div>
+</section>
+
+<section class="chapter" id="ch7" data-name="井">
+  <div class="ch-head">
+    <p class="ch-label">CHAPITRE 07 · LE PUITS</p>
+    <h2>「沙漠里，真的藏着井吗？」</h2>
+    <span class="orn">✦ ✦ ✦</span>
+  </div>
+  <figure class="scene"><img src="assets/fig-well.webp" alt="水彩画：星空下沙漠里的老石井，木辘轳与绳子" loading="lazy"/></figure>
+  <div class="card">
+    <p>小王子对困在沙漠里的飞行员说：「沙漠之所以好看，是因为不知道在哪一处，藏着一口井。」</p>
+    <p>他们走了一整夜。天快亮的时候，真的找到了一口井——辘轳、水桶、一根磨旧的绳子，像村子里过节时的样子。水从绳子上滴下来，滴进桶里，声音像一段很短的音乐。</p>
+  </div>
+  <p class="quote">让沙漠显得美丽的，是它在某个看不见的地方，藏着一口井。</p>
+  <div class="inter">
+    <p class="it-title">INTERLUDE · 打一桶水</p>
+    <div class="well-wrap" id="wellWrap">
+      <svg viewBox="0 0 200 168" fill="none" aria-hidden="true">
+        <path d="M12 152h176" stroke="#243453" stroke-width="2" stroke-linecap="round"/>
+        <rect x="52" y="58" width="6" height="94" rx="2" fill="#33456b"/>
+        <rect x="142" y="58" width="6" height="94" rx="2" fill="#33456b"/>
+        <rect x="44" y="50" width="112" height="9" rx="4" fill="#3d5379"/>
+        <circle cx="100" cy="64" r="10" stroke="#e6b95c" stroke-width="3"/>
+        <g id="crank"><path d="M100 64l17-7" stroke="#e6b95c" stroke-width="3" stroke-linecap="round"/><circle cx="119" cy="56" r="3.4" fill="#e6b95c"/></g>
+        <clipPath id="wellClip"><rect x="42" y="70" width="116" height="88"/></clipPath>
+        <g clip-path="url(#wellClip)">
+          <g id="bucketG">
+            <path d="M100 70v62" stroke="#8d9bbd" stroke-width="2"/>
+            <path d="M88 132h24l-3.2 16h-17.6z" fill="#33456b" stroke="#5d7a5d" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M91 132c0-5 18-5 18 0" stroke="#5d7a5d" stroke-width="2"/>
+          </g>
+        </g>
+        <ellipse class="water" cx="100" cy="154" rx="17" ry="4" fill="#7fa3d4" opacity="0"/>
+        <circle class="water" cx="93" cy="148" r="1.5" fill="#aec6ea" opacity="0"/>
+        <circle class="water" cx="108" cy="145" r="1.2" fill="#aec6ea" opacity="0"/>
+      </svg>
+    </div>
+    <button class="it-btn" id="wellBtn" type="button">转动辘轳</button>
+    <p class="it-line" id="wellLine">这一桶水，喝起来像一份节日的礼物。</p>
+  </div>
+</section>
+
+<section class="chapter" id="ch8" data-name="星星">
+  <div class="ch-head">
+    <p class="ch-label">CHAPITRE 08 · LES ÉTOILES</p>
+    <h2>「你会有一群会笑的星星。」</h2>
+    <span class="orn">✦ ✦ ✦</span>
+  </div>
+  <figure class="scene"><img src="assets/fig-farewell.webp" alt="水彩画：沙丘上的小小身影，仰望远处的星空" loading="lazy"/></figure>
+  <div class="card">
+    <p>该回家了。临走前，小王子把最后的礼物留给飞行员：从今往后，当你抬头看星星，会想起我住在其中的一颗上——因为你会拥有一群会笑的星星。</p>
+    <p>他走得很安静，像沙丘上的影子慢慢收拢，一点声音也没有。飞行员再也没有见过他。但每个夜里，当他望向天空，五亿颗小铃铛在轻轻地响。</p>
+  </div>
+  <p class="quote">星星对每个人都是不一样的。对旅行的人，是向导；对其他人，只是几点光。</p>
+  <div class="inter">
+    <p class="it-title">INTERLUDE · 让星星笑出声</p>
+    <div class="star-row" id="starRow"></div>
+    <p class="it-line" id="starLine">今晚，天上所有的星星都在笑。</p>
+    <p class="it-count" id="starCount">已经笑出声的星星：0 / 7</p>
+  </div>
+</section>
+
+<div class="final" id="final">
+  <p class="sig">✦ ✦ ✦ ✦ ✦</p>
+  <p class="last fx">愿你今晚抬头的时候，也有一颗星星，正对着你笑。</p>
+  <div class="cred">
+    改编自安托万·德·圣埃克苏佩里《小王子》（1943）。<br/>
+    全部文字为<b>原创重述</b>，全部插图为<b>原创绘制</b>，向原作致敬。<br/>
+    <b>StarrySea1412</b> · 2026.10 · 单页零依赖 · 手机与电脑皆可进入
+  </div>
+  <button class="totop" id="totopBtn" type="button">↑ 回到第一颗星</button>
+</div>
+</main>
+
+<footer>这颗小小的星球，会一直漂浮在这里。 · 原创重述与插画 · 灵感来自《小王子》</footer>
+
+<script>
+(function(){
+  "use strict";
+  var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------- 星空画布 ---------- */
+  var sky = document.getElementById("sky");
+  var ctx = sky.getContext("2d");
+  var stars = [], W = 0, H = 0, DPR = Math.min(2, window.devicePixelRatio || 1);
+  var mx = 0, my = 0;
+  function resizeSky(){
+    W = innerWidth; H = innerHeight;
+    sky.width = W * DPR; sky.height = H * DPR;
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    var n = Math.max(70, Math.min(210, Math.round(W * H / 9000)));
+    stars = [];
+    for (var i = 0; i < n; i++){
+      stars.push({
+        x: Math.random() * W, y: Math.random() * H,
+        r: 0.4 + Math.random() * 1.5,
+        p: Math.random() * Math.PI * 2,
+        s: 0.4 + Math.random() * 1.1,
+        d: 0.2 + Math.random()
+      });
+    }
+    big = [];
+    for (var j = 0; j < 7; j++){
+      big.push({ x: Math.random() * W, y: Math.random() * H, p: Math.random() * 6.28, s: 0.5 + Math.random() * 0.7 });
+    }
+    drawSky(performance.now());
+  }
+  var big = [];
+  function drawSky(t){
+    ctx.clearRect(0, 0, W, H);
+    var sec = t / 1000;
+    for (var i = 0; i < stars.length; i++){
+      var st = stars[i];
+      var a = 0.28 + 0.6 * Math.abs(Math.sin(sec * st.s + st.p));
+      var ox = mx * 10 * st.d, oy = my * 8 * st.d;
+      ctx.beginPath();
+      ctx.fillStyle = "rgba(233,228,214," + a.toFixed(3) + ")";
+      ctx.arc(st.x + ox, st.y + oy, st.r, 0, 6.2832);
+      ctx.fill();
+    }
+    for (var k = 0; k < big.length; k++){
+      var b = big[k];
+      var al = 0.35 + 0.5 * Math.abs(Math.sin(sec * b.s + b.p));
+      var x = b.x + mx * 16, y = b.y + my * 12;
+      ctx.strokeStyle = "rgba(230,185,92," + al.toFixed(3) + ")";
+      ctx.lineWidth = 1.2;
+      ctx.beginPath();
+      ctx.moveTo(x - 7, y); ctx.lineTo(x + 7, y);
+      ctx.moveTo(x, y - 7); ctx.lineTo(x, y + 7);
+      ctx.stroke();
+    }
+  }
+  addEventListener("resize", resizeSky);
+  addEventListener("pointermove", function(e){
+    mx = (e.clientX / innerWidth - 0.5) * 2;
+    my = (e.clientY / innerHeight - 0.5) * 2;
+  }, { passive: true });
+  if (!reduce){
+    var skyRun = true;
+    document.addEventListener("visibilitychange", function(){ skyRun = !document.hidden; if (skyRun) loop(performance.now()); });
+    function loop(t){ if (!skyRun) return; drawSky(t); requestAnimationFrame(loop); }
+    resizeSky();
+    requestAnimationFrame(loop);
+  } else {
+    resizeSky();
+  }
+
+  /* ---------- 音效（WebAudio 小铃铛） ---------- */
+  var AC = null;
+  function chime(freq, dur, vol){
+    try {
+      AC = AC || new (window.AudioContext || window.webkitAudioContext)();
+      if (AC.state === "suspended") AC.resume();
+      var o = AC.createOscillator(), g = AC.createGain();
+      o.type = "sine"; o.frequency.value = freq;
+      var now = AC.currentTime, d = dur || 0.9, v = vol || 0.10;
+      g.gain.setValueAtTime(0.0001, now);
+      g.gain.exponentialRampToValueAtTime(v, now + 0.02);
+      g.gain.exponentialRampToValueAtTime(0.0001, now + d);
+      o.connect(g); g.connect(AC.destination);
+      o.start(now); o.stop(now + d + 0.1);
+    } catch (e) { /* 静音环境忽略 */ }
+  }
+
+  /* ---------- 入场揭示（滚动检测，IAB 环境下 IO 不可靠） ---------- */
+  var fxEls = [].slice.call(document.querySelectorAll(".ch-head,.scene,.card,.quote,.inter,.final .last"));
+  if (!reduce && fxEls.length){
+    fxEls.forEach(function(el){ el.classList.add("fx"); });
+    var reveal = function(el){
+      if (el.classList.contains("fx-in")) return;
+      el.classList.add("fx-in");
+      setTimeout(function(){ el.classList.remove("fx"); }, 1500);
+    };
+    var check = function(){
+      var vh = innerHeight || document.documentElement.clientHeight;
+      for (var i = 0; i < fxEls.length; i++){
+        var el = fxEls[i];
+        if (el.classList.contains("fx-in")) continue;
+        var r = el.getBoundingClientRect();
+        if (r.top < vh - 40 && r.bottom > 0) reveal(el);
+      }
+    };
+    var last = 0;
+    addEventListener("scroll", function(){
+      var now = Date.now();
+      if (now - last > 120){ last = now; check(); }
+    }, { passive: true });
+    addEventListener("resize", check);
+    addEventListener("load", check);
+    check();
+    var born = Date.now();
+    var timer = setInterval(function(){
+      check();
+      if (document.querySelectorAll(".fx").length === 0 || Date.now() - born > 60000) clearInterval(timer);
+    }, 800);
+  }
+
+  /* ---------- 右侧星轨导航 ---------- */
+  var chapters = [].slice.call(document.querySelectorAll(".chapter"));
+  var rail = document.getElementById("rail");
+  chapters.forEach(function(sec, i){
+    var b = document.createElement("button");
+    b.type = "button";
+    b.textContent = "✦";
+    b.setAttribute("aria-label", "前往第 " + (i + 1) + " 章：" + sec.getAttribute("data-name"));
+    b.addEventListener("click", function(){
+      sec.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+    });
+    rail.appendChild(b);
+  });
+  var railBtns = [].slice.call(rail.children);
+  function spy(){
+    var mid = innerHeight * 0.45, cur = 0;
+    for (var i = 0; i < chapters.length; i++){
+      if (chapters[i].getBoundingClientRect().top < mid) cur = i;
+    }
+    railBtns.forEach(function(b, i){ b.classList.toggle("on", i === cur); });
+  }
+  var lastSpy = 0;
+  addEventListener("scroll", function(){
+    var now = Date.now();
+    if (now - lastSpy > 150){ lastSpy = now; spy(); }
+  }, { passive: true });
+  spy();
+
+  /* ---------- 封面进入 ---------- */
+  document.getElementById("enterBtn").addEventListener("click", function(){
+    chime(659, 1.2, 0.08);
+    document.getElementById("ch1").scrollIntoView({ behavior: reduce ? "auto" : "smooth" });
+  });
+  document.getElementById("totopBtn").addEventListener("click", function(){
+    window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+  });
+
+  /* ---------- 互动一：玫瑰绽放 ---------- */
+  var roseDone = false;
+  var roseWrap = document.getElementById("roseWrap");
+  var roseBtn = document.getElementById("roseBtn");
+  roseBtn.addEventListener("click", function(){
+    if (roseDone) return;
+    roseDone = true;
+    roseWrap.classList.add("bloomed");
+    document.getElementById("roseLine").classList.add("show");
+    chime(523, 1.1, 0.09); setTimeout(function(){ chime(784, 1.2, 0.07); }, 180);
+    roseBtn.disabled = true; roseBtn.textContent = "花瓣展开了";
+  });
+
+  /* ---------- 互动二：拔猴面包树 ---------- */
+  var saplingSVG = '<svg viewBox="0 0 74 96" fill="none" aria-hidden="true">' +
+    '<path d="M37 92c-1-18 0-30 0-42" stroke="#5d7a5d" stroke-width="4" stroke-linecap="round"/>' +
+    '<path d="M37 66c-9-1-15-8-16-18 9-1 15 6 16 18z" fill="#5d7a5d"/>' +
+    '<path d="M37 58c9-2 15-9 15-19-9-1-15 7-15 19z" fill="#4c684c"/>' +
+    '<path d="M37 50c-3-6-3-12 0-19 3 7 3 13 0 19z" fill="#728a6f"/>' +
+    '<path d="M28 92h18" stroke="#33456b" stroke-width="3" stroke-linecap="round"/></svg>';
+  var row = document.getElementById("saplingRow");
+  var pulled = 0;
+  var baoLine = document.getElementById("baobabLine");
+  for (var si = 0; si < 3; si++){
+    (function(idx){
+      var b = document.createElement("button");
+      b.type = "button"; b.className = "sapling";
+      b.setAttribute("aria-label", "拔掉第 " + (idx + 1) + " 棵猴面包树幼苗");
+      b.innerHTML = saplingSVG;
+      b.addEventListener("click", function(){
+        if (b.classList.contains("gone")) return;
+        b.classList.add("gone");
+        pulled++;
+        document.getElementById("baobabCount").textContent = "已拔除 " + pulled + " / 3" + (pulled === 3 ? " ✦" : "");
+        chime(392 + pulled * 60, 0.7, 0.08);
+        if (pulled === 3){
+          baoLine.classList.add("show");
+          setTimeout(function(){ chime(659, 1.1, 0.07); }, 200);
+        }
+      });
+      row.appendChild(b);
+    })(si);
+  }
+
+  /* ---------- 互动三：六颗小星球 ---------- */
+  var planetBase = function(glyph){
+    return '<svg viewBox="0 0 74 74" fill="none" aria-hidden="true">' +
+      '<circle cx="37" cy="45" r="21" fill="#16233f" stroke="#3d5379" stroke-width="2"/>' +
+      '<circle cx="29" cy="40" r="2" fill="#243453"/><circle cx="45" cy="52" r="1.6" fill="#243453"/>' +
+      glyph + "</svg>";
+  };
+  var planets = [
+    { n: "国王", g: '<path d="M27 18l3.5-6 4.5 5 2-7 2 7 4.5-5 3.5 6z" fill="#e6b95c"/><path d="M31 24h12" stroke="#e6b95c" stroke-width="2.4" stroke-linecap="round"/>',
+      c: "<b>国王</b>：「我命令你打哈欠。」他统辖着一切，连星星都得按时听他指挥——虽然他的星球上，只有他自己和一件旧袍子。" },
+    { n: "虚荣者", g: '<rect x="31" y="12" width="12" height="13" rx="2" fill="#c8434e"/><rect x="27" y="24" width="20" height="3.4" rx="1.7" fill="#c8434e"/>',
+      c: "<b>虚荣者</b>：「请鼓掌吧！」——他戴着一顶高高的帽子，只听见掌声，别的什么都听不见。" },
+    { n: "酒鬼", g: '<rect x="32.5" y="11" width="3.4" height="7" rx="1.4" fill="#5d7a5d"/><rect x="30" y="17" width="8.6" height="15" rx="3" fill="#5d7a5d"/>',
+      c: "<b>酒鬼</b>：「你为什么要喝酒？」「为了忘记。」「忘记什么？」「忘记我喝酒的羞愧。」" },
+    { n: "商人", g: '<ellipse cx="37" cy="30" rx="8.5" ry="3.2" fill="#e6b95c"/><ellipse cx="37" cy="26.5" rx="8.5" ry="3.2" fill="#d3a94e"/><ellipse cx="37" cy="23" rx="8.5" ry="3.2" fill="#e6b95c"/>',
+      c: "<b>商人</b>：他埋头数星星，把编号写进纸片锁进抽屉。「我占有它们。」——占有从不能让人富有，只会让人一直忙。" },
+    { n: "点灯人", g: '<rect x="36" y="16" width="2.4" height="15" rx="1.2" fill="#3d5379"/><circle cx="37.2" cy="13.5" r="5" fill="#e6b95c"/><path d="M31 8l-2.6-2.6M43.4 8l2.6-2.6" stroke="#e6b95c" stroke-width="1.8" stroke-linecap="round"/>',
+      c: "<b>点灯人</b>：照亮的是一整颗星球，所以他每分钟都要点一次灯、熄一次灯。他是唯一一个，让小王子觉得在忙正经事的大人。" },
+    { n: "地理学家", g: '<rect x="26" y="14" width="9.6" height="14" rx="1.4" fill="#f3ddb0"/><rect x="38.4" y="14" width="9.6" height="14" rx="1.4" fill="#e8cf9e"/><path d="M37 14v14" stroke="#a8894f" stroke-width="1.6"/>',
+      c: "<b>地理学家</b>：「我只记录永恒的山河。花？花是短暂的，不在我的记录里。」——可是小王子的那朵玫瑰，正是这样一朵花。" },
+  ];
+  var miniRow = document.getElementById("miniRow");
+  var miniCap = document.getElementById("miniCap");
+  planets.forEach(function(p, i){
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "mini";
+    b.setAttribute("aria-label", "点亮" + p.n + "的星球");
+    b.innerHTML = planetBase(p.g) + "<span>" + p.n + "</span>";
+    b.addEventListener("click", function(){
+      if (b.classList.contains("on")) return;
+      b.classList.add("on");
+      miniCap.innerHTML = p.c;
+      chime(392 + i * 55, 0.7, 0.07);
+    });
+    miniRow.appendChild(b);
+  });
+
+  /* ---------- 互动四：驯养 ---------- */
+  var pawSVG = '<svg class="paw" viewBox="0 0 24 24" fill="#e6b95c" aria-hidden="true"><circle cx="12" cy="15.5" r="4.6"/><circle cx="5.6" cy="10.4" r="2.1"/><circle cx="10.3" cy="7.2" r="2.1"/><circle cx="14.9" cy="7.2" r="2.1"/><circle cx="19.2" cy="10.6" r="2.1"/></svg>';
+  var pawRow = document.getElementById("pawRow");
+  for (var pi = 0; pi < 6; pi++){ pawRow.insertAdjacentHTML("beforeend", pawSVG); }
+  var paws = [].slice.call(pawRow.children);
+  var foxSteps = [
+    "狐狸坐在麦田里，隔着一段距离，安静地看着你。",
+    "它没有动。驯养的第一天，安静就是礼貌。",
+    "它歪了歪头——开始有点好奇了。",
+    "它向前挪了半步。你听见了自己的心跳。",
+    "它的耳朵转向了你。麦田里，只剩风经过的声音。",
+    "你们之间安静得，能听见麦子一点点变黄。",
+    "「从今天起，你对我来说就是独一无二的了。」狐狸说，「金色的麦子会让我想起你。」"
+  ];
+  var foxStep = 0, foxDone = false;
+  var foxScene = document.getElementById("foxScene");
+  var foxLine = document.getElementById("foxLine");
+  var foxBtn = document.getElementById("foxBtn");
+  foxLine.classList.add("show");
+  foxBtn.addEventListener("click", function(){
+    if (foxDone) return;
+    foxStep++;
+    paws[foxStep - 1].classList.add("on");
+    foxScene.style.transform = "scale(" + (1 + foxStep * 0.02) + ")";
+    foxLine.textContent = foxSteps[foxStep];
+    chime(440 + foxStep * 42, 0.8, 0.08);
+    if (foxStep === 6){
+      foxDone = true;
+      foxBtn.disabled = true; foxBtn.textContent = "它已经是你的狐狸了";
+      foxScene.style.filter = "brightness(1.07) saturate(1.05)";
+      setTimeout(function(){
+        foxLine.textContent = foxSteps[6] + " 然后它把秘密也告诉了你：有些东西，不用眼睛，也看得见。";
+        chime(880, 1.4, 0.07);
+      }, 1600);
+    }
+  });
+
+  /* ---------- 互动五：打水 ---------- */
+  var wellDone = false;
+  var wellWrap = document.getElementById("wellWrap");
+  var wellBtn = document.getElementById("wellBtn");
+  wellBtn.addEventListener("click", function(){
+    if (wellDone) return;
+    wellDone = true;
+    wellWrap.classList.add("drawn");
+    document.querySelectorAll(".well-wrap .water").forEach(function(el){ el.style.opacity = ""; });
+    document.getElementById("wellLine").classList.add("show");
+    chime(392, 0.8, 0.08); setTimeout(function(){ chime(523, 0.9, 0.07); }, 300); setTimeout(function(){ chime(659, 1.2, 0.06); }, 620);
+    wellBtn.disabled = true; wellBtn.textContent = "水打上来了";
+  });
+
+  /* ---------- 互动六：星星大笑 ---------- */
+  var starRow = document.getElementById("starRow");
+  for (var sti = 0; sti < 7; sti++){
+    var sb = document.createElement("button");
+    sb.type = "button"; sb.className = "star";
+    sb.textContent = "✦";
+    sb.setAttribute("aria-label", "点亮第 " + (sti + 1) + " 颗星星");
+    sb.addEventListener("click", (function(idx){
+      return function(){
+        if (sb.classList.contains("lit")) return;
+        sb.classList.add("lit");
+        lit++;
+        document.getElementById("starCount").textContent = "已经笑出声的星星：" + lit + " / 7";
+        chime(523 * Math.pow(1.108, idx), 1, 0.08);
+        if (lit === 7){
+          document.getElementById("starLine").classList.add("show");
+          setTimeout(function(){ chime(1046, 1.6, 0.07); }, 240);
+          var f = document.getElementById("final");
+          var l = f.querySelector(".last");
+          l.classList.add("fx-in");
+        }
+      };
+    })(sti));
+    starRow.appendChild(sb);
+  }
+  var lit = 0;
+  document.getElementById("starLine").classList.remove("show");
+})();
+</script>
+</body>
+</html>
