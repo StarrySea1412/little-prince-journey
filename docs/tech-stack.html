@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<title>技术栈全景图 · little-prince-journey</title>
+<style>
+  :root{
+    --bg:#080f1c;--card:#0f1a2e;--ink:#eee8da;--muted:#a0a8b9;
+    --blue:#8fb3e8;--gold:#dfbc79;--mint:#8fd4b8;--coral:#e8b09a;--line:#24334d;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{width:960px;background:
+    radial-gradient(60rem 28rem at 80% -8%,#16264a88,transparent 60%),
+    radial-gradient(40rem 22rem at 0% 100%,#2a241866,transparent 55%),
+    var(--bg);
+    color:var(--ink);padding:52px 56px 44px;
+    font-family:-apple-system,"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif}
+  .eyebrow{font-family:Consolas,monospace;font-size:12px;letter-spacing:.24em;color:var(--gold);margin-bottom:16px}
+  h1{font-size:44px;font-weight:800;letter-spacing:.06em;line-height:1.25;margin-bottom:12px}
+  h1 em{font-style:normal;color:var(--blue)}
+  .sub{font-size:15px;color:var(--muted);letter-spacing:.06em}
+  .sub b{color:var(--ink);font-weight:600}
+  .flow{display:flex;align-items:stretch;margin:30px 0 34px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px 22px}
+  .flow .fcard{flex:1;display:flex;flex-direction:column;justify-content:center;gap:6px;padding:0 6px}
+  .flow .fcard b{font-size:14px;letter-spacing:.02em}
+  .flow .fcard span{font-size:11px;color:var(--muted);line-height:1.6}
+  .flow .arrow{display:flex;align-items:center;color:#3d5578;font-size:18px;padding:0 8px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px 22px 18px;position:relative;overflow:hidden}
+  .card:before{content:"";position:absolute;inset:0 0 auto;height:3px;background:var(--c)}
+  .chead{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+  .num{font-family:Consolas,monospace;font-size:13px;font-weight:700;color:var(--bg);background:var(--c);border-radius:6px;padding:3px 8px}
+  .ic{width:30px;height:30px;flex:none;display:flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:8px;background:#0b1425}
+  .ic svg{width:20px;height:20px}
+  .card h3{font-size:16.5px;letter-spacing:.02em}
+  .card h3 small{display:block;font-family:Consolas,monospace;font-size:9.5px;letter-spacing:.16em;color:var(--muted);font-weight:400;margin-top:3px}
+  .card p{font-size:12.5px;line-height:1.85;color:var(--muted)}
+  .card p b{color:var(--ink);font-weight:600}
+  .card p code{font-family:Consolas,monospace;font-size:11px;color:var(--gold);background:#dfbc7914;padding:1px 5px;border-radius:4px}
+  .bar{margin-top:20px;background:linear-gradient(90deg,#dfbc7918,#8fb3e818);border:1px solid var(--line);border-radius:10px;padding:18px 24px;display:flex;align-items:center;gap:14px}
+  .bar b{color:var(--gold);font-size:15px;letter-spacing:.03em;white-space:nowrap}
+  .bar span{font-size:12.5px;color:var(--muted);line-height:1.8}
+  .foot{margin-top:22px;display:flex;justify-content:space-between;align-items:center;border-top:1px dashed var(--line);padding-top:16px;font-size:11.5px;color:var(--muted)}
+  .foot code{font-family:Consolas,monospace;font-size:10.5px;color:var(--blue)}
+</style>
+</head>
+<body>
+  <p class="eyebrow">STARRYSEA · LITTLE PRINCE JOURNEY · TECH STACK</p>
+  <h1>小王子 · <em>星间漫游</em></h1>
+  <p class="sub">九章可以走进去的互动旅程 —— <b>原创中文重述 + 原创水彩插画</b> · 单页零依赖 · 手机与电脑皆可进入</p>
+
+  <div class="flow">
+    <div class="fcard"><b>三个文件</b><span>HTML + CSS + JS<br/>合计约 77KB · 零依赖</span></div>
+    <div class="arrow">➜</div>
+    <div class="fcard"><b>星空 canvas</b><span>呼吸 · 视差 · 隐藏即停<br/>减少动态即停</span></div>
+    <div class="arrow">➜</div>
+    <div class="fcard"><b>水彩世界</b><span>6 张场景 + 12 枚印章<br/>96px 缩略图合计 84KB</span></div>
+    <div class="arrow">➜</div>
+    <div class="fcard"><b>七枚纪念</b><span>帽子/玫瑰/幼苗<br/>星球/狐狸/井/星星</span></div>
+    <div class="arrow">➜</div>
+    <div class="fcard"><b>GitHub Pages</b><span>main(root) 直发<br/>.nojekyll · 零 CI</span></div>
+  </div>
+
+  <div class="grid">
+    <div class="card" style="--c:var(--blue)">
+      <div class="chead"><span class="num">01</span>
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M6 5.5h12v13H6z" stroke="#8fb3e8" stroke-width="1.6"/><path d="M9 9h6M9 12h6M9 15h4" stroke="#8fb3e8" stroke-width="1.4" stroke-linecap="round"/></svg></span>
+        <h3>叙事结构<small>STORY</small></h3></div>
+      <p>九章滚动叙事（<code>#ch0…#ch8</code> 可直链分享），阅读线 45% 自动定位当前章；hash 路由带<b>导航令牌</b>防过期跳转，2.2 秒超时兜底。</p>
+    </div>
+    <div class="card" style="--c:var(--gold)">
+      <div class="chead"><span class="num">02</span>
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2.8l3.6 6.6L12 21l-3.6-11.6z" stroke="#dfbc79" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="10" r="1.5" stroke="#dfbc79" stroke-width="1.4"/></svg></span>
+        <h3>字体<small>TYPEFACE</small></h3></div>
+      <p>霞鹜文楷（LXGW WenKai，OFL）：按页面用字子集化 <b>753 字形</b>，两个字重各约 165KB 自托管；<code>font-weight: 300 599 / 600 900</code> 区间映射。</p>
+    </div>
+    <div class="card" style="--c:var(--mint)">
+      <div class="chead"><span class="num">03</span>
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3.2c4.9 0 8.8 3.3 8.8 7.4 0 4-3.4 6.2-6.6 6.2h-1.7c-1 0-1.8.7-1.8 1.6 0 1.2 1.1 1.6 1.1 2.4 0 .9-.9 1.6-2.2 1.6-4.1 0-6.4-3.6-6.4-8.2C3.2 8.6 7 3.2 12 3.2z" stroke="#8fd4b8" stroke-width="1.7"/><circle cx="8" cy="10" r="1.2" fill="#dfbc79"/><circle cx="12" cy="7.6" r="1.2" fill="#8fb3e8"/><circle cx="16" cy="10" r="1.2" fill="#dfbc79"/></svg></span>
+        <h3>插画<small>ARTWORK</small></h3></div>
+      <p>6 张场景水彩 + 12 枚交互印章（AI 辅助原创绘制）；互动小图重导出 96px 缩略图，12 张合计 <b>84KB</b>，画风不变、体积更轻。</p>
+    </div>
+    <div class="card" style="--c:var(--coral)">
+      <div class="chead"><span class="num">04</span>
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M5 4l7 16 2.2-6.6L21 11z" stroke="#e8b09a" stroke-width="1.7" stroke-linejoin="round"/><path d="M17.5 3l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z" fill="#dfbc79"/></svg></span>
+        <h3>互动与声音<small>PLAY & SOUND</small></h3></div>
+      <p>七枚纪念各有仪式（狐狸六步 / 辘轳三转 / 星星上行音阶）；声音是 <b>0 个音频文件</b>——WebAudio 正弦合成，手势解锁、隐藏即挂起。</p>
+    </div>
+    <div class="card" style="--c:var(--mint)">
+      <div class="chead"><span class="num">05</span>
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3.5V13c0 4.4-3 7.6-7 9-4-1.4-7-4.6-7-9V6.5z" stroke="#8fd4b8" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 12l2.2 2.2L15.5 10" stroke="#dfbc79" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <h3>韧性<small>RESILIENCE</small></h3></div>
+      <p>存档逐字段校验、私密模式静默降级；读屏播报 7 处、原生 dialog 焦点管理、全键盘可玩、<b>无 JS 也能通读全文</b>、尊重「减少动态效果」。</p>
+    </div>
+    <div class="card" style="--c:var(--blue)">
+      <div class="chead"><span class="num">06</span>
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M3.5 11.5L20.5 4l-4 17-4.6-6.4z" stroke="#8fb3e8" stroke-width="1.7" stroke-linejoin="round"/><path d="M11.9 14.6L20.5 4" stroke="#dfbc79" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        <h3>发布<small>DEPLOY</small></h3></div>
+      <p>GitHub Pages 静态直发（main 根目录 + <code>.nojekyll</code>），无构建、无依赖；原站 <code>littleprince.dev</code>（Unity 桌面版）不含任何素材，<b>全站原创</b>、页脚署名致敬。</p>
+    </div>
+  </div>
+
+  <div class="bar">
+    <b>亮点总结</b>
+    <span>原创重述 + 原创插画的版权安全 · 单页零依赖 · 手机与桌面双端可玩 · 声音默认关闭 · 首屏约 750KB（含封面与字体） · 细节全部来自仓库真实源码</span>
+  </div>
+  <div class="foot">
+    <span>小王子 · 星间漫游 · 2026.10 · 单页零依赖</span>
+    <span><code>starrysea1412.github.io/little-prince-journey</code></span>
+  </div>
+</body>
+</html>
